@@ -2,6 +2,8 @@ package com.example.SpringBootExpert.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -14,6 +16,9 @@ public class Cliente {
     @Column(name = "nome", length = 100)
     private String nome;
 
+    @OneToMany(mappedBy = "cliente")
+    private Set<Pedido> pedido;
+
     public Cliente() {
     }
 
@@ -24,6 +29,14 @@ public class Cliente {
 
     public Cliente(String nome) {
         this.nome = nome;
+    }
+
+    public Set<Pedido> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Set<Pedido> pedido) {
+        this.pedido = pedido;
     }
 
     public Integer getId() {

@@ -1,12 +1,24 @@
 package com.example.SpringBootExpert.domain.entity;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "produto")
 public class Produto {
 
+    @Id
+    @GeneratedValue( strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Integer id;
+
+    @Column(name = "DESCRICAO")
     private String descricao;
+
+    @Column(name = "PRECO_UNITARIO")
     private BigDecimal preco;
+
 
     public Integer getId() {
         return id;

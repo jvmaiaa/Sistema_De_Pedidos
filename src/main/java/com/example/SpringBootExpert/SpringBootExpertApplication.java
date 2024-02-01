@@ -17,11 +17,11 @@ public class SpringBootExpertApplication {
 	public CommandLineRunner init(@Autowired Clientes clientes) {
 		return args -> {
 			System.out.println("Salvando clientes");
-			clientes.save(new Cliente("José"));
+			clientes.save(new Cliente("João"));
 			clientes.save(new Cliente("Outro cliente"));
 
-			boolean existe = clientes.existsByNome("João");
-			System.out.println("Existe um cliente com o nome João? " + existe);
+			List<Cliente> result = clientes.encontrarPorNome("João");
+			result.forEach(System.out::println);
 		};
 	}
 
