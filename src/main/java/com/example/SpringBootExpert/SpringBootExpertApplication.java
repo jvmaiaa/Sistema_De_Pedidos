@@ -1,7 +1,7 @@
 package com.example.SpringBootExpert;
 
 import com.example.SpringBootExpert.domain.entity.Cliente;
-import com.example.SpringBootExpert.domain.repositorio.Clientes;
+import com.example.SpringBootExpert.domain.repository.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
