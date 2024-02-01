@@ -16,8 +16,8 @@ public class Cliente {
     @Column(name = "nome", length = 100)
     private String nome;
 
-    @OneToMany(mappedBy = "cliente")
-    private Set<Pedido> pedido;
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private Set<Pedido> pedidos;
 
     public Cliente() {
     }
@@ -31,12 +31,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public Set<Pedido> getPedido() {
-        return pedido;
+    public Set<Pedido> getPedidos() {
+        return pedidos;
     }
 
-    public void setPedido(Set<Pedido> pedido) {
-        this.pedido = pedido;
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public Integer getId() {

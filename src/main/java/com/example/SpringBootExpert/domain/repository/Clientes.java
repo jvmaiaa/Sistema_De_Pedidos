@@ -1,6 +1,7 @@
 package com.example.SpringBootExpert.domain.repository;
 
 import com.example.SpringBootExpert.domain.entity.Cliente;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,8 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
     void deleteByNome(String nome);
 
     boolean existsByNome(String nome);
+
+    @Query(" select c from Cliente c left join fetch c.pedidos where c.id =:id ")
+    Cliente findClienteFetchPedidos(@Param("id") Integer id);
+
 }

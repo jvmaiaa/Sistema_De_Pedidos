@@ -14,17 +14,17 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "CLIENTE_ID")
     private Cliente cliente;
 
-
     @Column(name = "DATA_PEDIDO")
     private LocalDate dataPedido;
 
-    @Column(name = "TOTAL", length = 20, precision = 2)
+    @Column(name = "TOTAL", precision = 20, scale = 2)
     private BigDecimal total;
 
     @OneToMany(mappedBy = "pedido")
@@ -70,4 +70,14 @@ public class Pedido {
     public void setItens(List<ItemPedido> itens) {
         this.itens = itens;
     }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", dataPedido=" + dataPedido +
+                ", total=" + total +
+                '}';
+    }
+
 }

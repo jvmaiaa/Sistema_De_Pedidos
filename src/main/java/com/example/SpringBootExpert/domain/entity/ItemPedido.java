@@ -14,7 +14,6 @@ public class ItemPedido {
     @Column(name = "ID")
     private Integer id;
 
-
     @ManyToOne
     @JoinColumn(name = "PEDIDO_ID")
     private Pedido pedido;
