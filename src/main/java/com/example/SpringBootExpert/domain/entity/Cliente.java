@@ -13,6 +13,9 @@ public class Cliente {
     @Column(name = "id")
     private Integer id;
 
+    @Column(name = "cpf", length = 11)
+    private String cpf;
+
     @Column(name = "nome", length = 100)
     private String nome;
 
@@ -22,9 +25,10 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Integer id, String nome) {
+    public Cliente(Integer id, String nome, String cpf) {
         this.id = id;
         this.nome = nome;
+        this.cpf = cpf;
     }
 
     public Cliente(String nome) {
@@ -55,11 +59,21 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     @Override
     public String toString() {
         return "Cliente{" +
-                "id='" + id + '\'' +
+                "id=" + id +
+                ", cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
+                ", pedidos=" + pedidos +
                 '}';
     }
 }
