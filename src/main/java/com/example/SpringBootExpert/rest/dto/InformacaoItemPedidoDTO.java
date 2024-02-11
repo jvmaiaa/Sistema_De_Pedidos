@@ -1,20 +1,20 @@
 package com.example.SpringBootExpert.rest.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PedidoDTO {
+@Builder
+public class InformacaoItemPedidoDTO {
 
-    private Integer idCliente;
-    private BigDecimal total;
-    private List<ItemPedidoDTO> items;
+    private String descricaoProduto;
+    private BigDecimal precoUnitario;
+    private Integer quantidade;
 }
