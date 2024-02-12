@@ -2,6 +2,8 @@ package com.example.SpringBootExpert.rest.controller;
 
 import com.example.SpringBootExpert.domain.entity.ItemPedido;
 import com.example.SpringBootExpert.domain.entity.Pedido;
+import com.example.SpringBootExpert.domain.enums.StatusPedido;
+import com.example.SpringBootExpert.rest.dto.AtualizacaoStatusPedidoDTO;
 import com.example.SpringBootExpert.rest.dto.InformacaoItemPedidoDTO;
 import com.example.SpringBootExpert.rest.dto.InformacoesPedidoDTO;
 import com.example.SpringBootExpert.rest.dto.PedidoDTO;
@@ -39,6 +41,14 @@ public class PedidoController {
                 .map( p -> converter(p) )
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido não encontrado"));
     }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateStatus( @RequestBody AtualizacaoStatusPedidoDTO dto, @PathVariable Integer id) {
+        String novoStatus = dto.getNovoStatus();
+        service.AtualizaStatus(id, StatusPedido.valueOf(novoStatus));
+    }
+
 
     private InformacoesPedidoDTO converter(Pedido pedido){
         return InformacoesPedidoDTO

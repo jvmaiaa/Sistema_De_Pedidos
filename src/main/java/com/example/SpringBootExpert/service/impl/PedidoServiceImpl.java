@@ -9,6 +9,7 @@ import com.example.SpringBootExpert.domain.repository.Clientes;
 import com.example.SpringBootExpert.domain.repository.ItensPedido;
 import com.example.SpringBootExpert.domain.repository.Pedidos;
 import com.example.SpringBootExpert.domain.repository.Produtos;
+import com.example.SpringBootExpert.exception.PedidoNaoEncontradoExeption;
 import com.example.SpringBootExpert.exception.RegraNegocioExeption;
 import com.example.SpringBootExpert.rest.dto.ItemPedidoDTO;
 import com.example.SpringBootExpert.rest.dto.PedidoDTO;
@@ -55,6 +56,17 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Optional<Pedido> obterPedidoCompleto(Integer id) {
         return repository.findByIdFetchItens(id);
+    }
+
+    @Override
+    @Transactional
+    public void AtualizaStatus(Integer id, StatusPedido statusPedido) {
+        repository
+                .findById(id)
+                .map( pedido -> {
+                    pedido.setStatus(statusPedido);
+                    return repository.save(pedido);
+                }).orElseThrow( () -> new PedidoNaoEncontradoExeption());
     }
 
     private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items){
