@@ -3,6 +3,7 @@ package com.example.SpringBootExpert.rest.controller;
 import com.example.SpringBootExpert.domain.entity.Cliente;
 import com.example.SpringBootExpert.domain.entity.Produto;
 import com.example.SpringBootExpert.domain.repository.Produtos;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpRange;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -36,13 +37,13 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto salvar(@RequestBody Produto produto){
+    public Produto salvar(@RequestBody @Valid Produto produto){
         return produtos.save(produto);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Produto produto){
+    public void atualizar(@PathVariable Integer id, @RequestBody @Valid Produto produto){
         produtos.findById(id)
                 .map(produtoExistente -> {
                     produto.setId(produtoExistente.getId());

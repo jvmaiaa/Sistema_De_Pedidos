@@ -2,6 +2,8 @@ package com.example.SpringBootExpert.rest.controller;
 
 import com.example.SpringBootExpert.domain.entity.Cliente;
 import com.example.SpringBootExpert.domain.repository.Clientes;
+import jakarta.validation.Valid;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -40,7 +42,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente save( @RequestBody Cliente cliente){
+    public Cliente save( @RequestBody @Valid Cliente cliente){
         return clientes.save(cliente);
     }
 
@@ -57,7 +59,7 @@ public class ClienteController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Cliente cliente){
+    public void atualizar(@PathVariable Integer id, @RequestBody @Valid Cliente cliente){
         clientes.findById(id)
                 .map(clienteExistente -> {
                     cliente.setId(clienteExistente.getId());

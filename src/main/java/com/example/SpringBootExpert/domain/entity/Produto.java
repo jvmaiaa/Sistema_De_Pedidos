@@ -1,6 +1,8 @@
 package com.example.SpringBootExpert.domain.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -18,9 +20,11 @@ public class Produto {
     private Integer id;
 
     @Column(name = "DESCRICAO")
+    @NotEmpty(message = "Campo Descrição é obrigatório.")
     private String descricao;
 
     @Column(name = "PRECO_UNITARIO")
+    @NotNull(message = "Campo Preço é obrigatório.")
     private BigDecimal preco;
 
 }
