@@ -1,5 +1,6 @@
 package com.example.SpringBootExpert.domain.entity;
 
+import com.example.SpringBootExpert.domain.enums.StatusPedido;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +34,10 @@ public class Pedido {
 
     @Column(name = "TOTAL", precision = 20, scale = 2)
     private BigDecimal total;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
+    private StatusPedido status;
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;

@@ -4,6 +4,7 @@ import com.example.SpringBootExpert.domain.entity.Cliente;
 import com.example.SpringBootExpert.domain.entity.ItemPedido;
 import com.example.SpringBootExpert.domain.entity.Pedido;
 import com.example.SpringBootExpert.domain.entity.Produto;
+import com.example.SpringBootExpert.domain.enums.StatusPedido;
 import com.example.SpringBootExpert.domain.repository.Clientes;
 import com.example.SpringBootExpert.domain.repository.ItensPedido;
 import com.example.SpringBootExpert.domain.repository.Pedidos;
@@ -42,6 +43,7 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setTotal(dto.getTotal());
         pedido.setDataPedido(LocalDate.now());
         pedido.setCliente(cliente);
+        pedido.setStatus(StatusPedido.REALIZADO);
 
         List<ItemPedido> itemsPedidos = converterItems(pedido, dto.getItems());
         repository.save(pedido);
