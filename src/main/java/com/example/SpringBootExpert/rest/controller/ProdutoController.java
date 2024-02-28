@@ -1,10 +1,8 @@
 package com.example.SpringBootExpert.rest.controller;
 
-import com.example.SpringBootExpert.domain.entity.Cliente;
 import com.example.SpringBootExpert.domain.entity.Produto;
 import com.example.SpringBootExpert.domain.repository.Produtos;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpRange;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;

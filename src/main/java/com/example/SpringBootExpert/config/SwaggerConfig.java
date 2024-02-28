@@ -34,6 +34,7 @@ import org.springframework.context.annotation.Configuration;
         }
 )
 public class SwaggerConfig {
+}
 /*
     @Bean
     public Docket docket(){
@@ -61,5 +62,5 @@ public class SwaggerConfig {
                 , "https://www.linkedin.com/in/joão-víctor-maia-4b9961265/"
                 , "joaovictormaia482@gmail.com");
     }
-*/
-}
+
+}*/

@@ -1,7 +1,6 @@
 package com.example.SpringBootExpert.validation.constraintValidation;
 
 import com.example.SpringBootExpert.validation.NotEmptyList;
-import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

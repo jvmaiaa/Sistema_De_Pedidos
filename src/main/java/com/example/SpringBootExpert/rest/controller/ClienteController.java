@@ -3,17 +3,11 @@ package com.example.SpringBootExpert.rest.controller;
 import com.example.SpringBootExpert.domain.entity.Cliente;
 import com.example.SpringBootExpert.domain.repository.Clientes;
 import jakarta.validation.Valid;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clientes")
